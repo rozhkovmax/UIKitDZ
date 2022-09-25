@@ -13,6 +13,9 @@
 		941F911B28DCBCB300127005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941F911928DCBCB300127005 /* Main.storyboard */; };
 		941F911D28DCBCB500127005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 941F911C28DCBCB500127005 /* Assets.xcassets */; };
 		941F912028DCBCB500127005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941F911E28DCBCB500127005 /* LaunchScreen.storyboard */; };
+		94C02B3228DF9B1F00844EDA /* ottenki.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 94C02B3128DF9B1F00844EDA /* ottenki.mp3 */; };
+		94C02B3428DF9B2500844EDA /* privychka.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 94C02B3328DF9B2500844EDA /* privychka.mp3 */; };
+		94C02B3628DF9E1300844EDA /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C02B3528DF9E1300844EDA /* AudioViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		941F911C28DCBCB500127005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		941F911F28DCBCB500127005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		941F912128DCBCB500127005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94C02B3128DF9B1F00844EDA /* ottenki.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = ottenki.mp3; sourceTree = "<group>"; };
+		94C02B3328DF9B2500844EDA /* privychka.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = privychka.mp3; sourceTree = "<group>"; };
+		94C02B3528DF9E1300844EDA /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +65,13 @@
 				941F911328DCBCB300127005 /* AppDelegate.swift */,
 				941F911528DCBCB300127005 /* SceneDelegate.swift */,
 				941F911728DCBCB300127005 /* ViewController.swift */,
+				94C02B3528DF9E1300844EDA /* AudioViewController.swift */,
 				941F911928DCBCB300127005 /* Main.storyboard */,
 				941F911C28DCBCB500127005 /* Assets.xcassets */,
 				941F911E28DCBCB500127005 /* LaunchScreen.storyboard */,
 				941F912128DCBCB500127005 /* Info.plist */,
+				94C02B3128DF9B1F00844EDA /* ottenki.mp3 */,
+				94C02B3328DF9B2500844EDA /* privychka.mp3 */,
 			);
 			path = UIKitDZ;
 			sourceTree = "<group>";
@@ -126,9 +135,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94C02B3428DF9B2500844EDA /* privychka.mp3 in Resources */,
 				941F912028DCBCB500127005 /* LaunchScreen.storyboard in Resources */,
 				941F911D28DCBCB500127005 /* Assets.xcassets in Resources */,
 				941F911B28DCBCB300127005 /* Main.storyboard in Resources */,
+				94C02B3228DF9B1F00844EDA /* ottenki.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				941F911828DCBCB300127005 /* ViewController.swift in Sources */,
+				94C02B3628DF9E1300844EDA /* AudioViewController.swift in Sources */,
 				941F911428DCBCB300127005 /* AppDelegate.swift in Sources */,
 				941F911628DCBCB300127005 /* SceneDelegate.swift in Sources */,
 			);
