@@ -8,7 +8,7 @@
 import UIKit
 /// Импорт библиотеки плеера
 import AVFoundation
-/// Начальный VC
+/// ViewController
 class ViewController: UIViewController {
     
     @IBOutlet weak var songOneImage: UIImageView!
@@ -20,39 +20,42 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
 // Кнопка перехода на 2 View с передачей картинки, названия и аудиодорожки для 1 песни
-    @IBAction func songOneButton(_ sender: Any) {
+    @IBAction func songOneActionButton(_ sender: Any) {
         let storybord = UIStoryboard(name: "Main", bundle: nil)
-                     guard let audioView = storybord.instantiateViewController(withIdentifier: "AudioView")
-                             as? AudioViewController else { return }
+        guard let audioView = storybord.instantiateViewController(withIdentifier: "AudioView")
+                as? AudioViewController else { return }
         audioView.image = songOneImage.image
         audioView.nameSong = songOneLable.text ?? ""
-        music(nameMusic: "ottenki", player: &audioView.player)
-        self.present(audioView, animated: true)
+        musicChoice(nameMusic: "ottenki", player: &audioView.player)
+        present(audioView, animated: true)
     }
+    
 // Кнопка перехода на 2 View с передачей картинки, названия и аудиодорожки для 2 песни
-    @IBAction func songTwoButton(_ sender: Any) {
+    @IBAction func songTwoActionButton(_ sender: Any) {
         let storybord = UIStoryboard(name: "Main", bundle: nil)
-                     guard let audioView = storybord.instantiateViewController(withIdentifier: "AudioView")
-                             as? AudioViewController else { return }
+        guard let audioView = storybord.instantiateViewController(withIdentifier: "AudioView")
+                as? AudioViewController else { return }
         audioView.image = songTwoImage.image
         audioView.nameSong = songTwoLable.text ?? ""
-        music(nameMusic: "privychka", player: &audioView.player)
-        self.present(audioView, animated: true)
+        musicChoice(nameMusic: "privychka", player: &audioView.player)
+        present(audioView, animated: true)
     }
+    
 // Метод для выбора песни
-    func music (nameMusic: String, player: inout AVAudioPlayer) {
+    func musicChoice (nameMusic: String, player: inout AVAudioPlayer) {
         do {
             if let audio = Bundle.main.path(forResource: nameMusic, ofType: "mp3") {
                 try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audio))
             }
         } catch {
-            let alertController = UIAlertController(title: "Внимание!",
+            let alertControllerMusicChoice = UIAlertController(title: "Внимание!",
                                                     message: "Аудиодорожка не найдена",
                                                     preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .default)
-            alertController.addAction(action)
-            present(alertController, animated: true, completion: nil)
+            let actionAlertControllerMusicChoice = UIAlertAction(title: "Ok", style: .default)
+            alertControllerMusicChoice.addAction(actionAlertControllerMusicChoice)
+            present(alertControllerMusicChoice, animated: true, completion: nil)
         }
     }
 }
