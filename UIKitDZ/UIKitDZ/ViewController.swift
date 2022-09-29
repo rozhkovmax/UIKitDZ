@@ -8,7 +8,7 @@
 import UIKit
 /// Импорт библиотеки плеера
 import AVFoundation
-/// ViewController
+/// Контроллер начального экрана
 class ViewController: UIViewController {
     
     @IBOutlet weak var songOneImage: UIImageView!

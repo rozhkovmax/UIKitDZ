@@ -8,7 +8,7 @@
 import UIKit
 /// Импорт библиотеки плеера
 import AVFoundation
-/// AudioViewController
+/// Контроллер плеера
 class AudioViewController: ViewController {
 
     @IBOutlet weak var songImage: UIImageView!
@@ -33,7 +33,7 @@ class AudioViewController: ViewController {
         songImage.image = image
         songLable.text = nameSong
         Timer.scheduledTimer(timeInterval: 0.1, target: self,
-                             selector: #selector(updateSlider),
+                             selector: #selector(updateSliderAction),
                              userInfo: nil, repeats: true)
     }
     
@@ -44,25 +44,21 @@ class AudioViewController: ViewController {
     
 // Slider значения коротого равняются длительности песни
     @IBAction func audioActionSlider(_ sender: Any) {
-        self.player.currentTime = TimeInterval(self.slider.value)
+        player.currentTime = TimeInterval(self.slider.value)
     }
     
 // Кнопка воспроизведения и паузы
     @IBAction func playTouchActionButton(_ sender: Any) {
-        
         shouldPlay = !shouldPlay
-        if shouldPlay {
-            playMusic()
-        } else {
-            pauseMusic()
-        }
+        guard shouldPlay else { return playMusic() }
+        guard !shouldPlay else { return pauseMusic() }
     }
     
 // Метод для воспроизведения и замены картинки
     func playMusic() {
         let pauseImage = UIImage(systemName: "pause.fill")
         playButton.setImage(pauseImage, for: .normal)
-        self.player.play()
+        player.play()
     }
     
 // Метод для паузы и замены картинки
@@ -73,8 +69,8 @@ class AudioViewController: ViewController {
     }
     
 // Метод для изменения значений slider
-    @objc func updateSlider() {
-        self.slider.value = Float(player.currentTime)
-        self.slider.maximumValue = Float(player.duration)
+    @objc func updateSliderAction() {
+        slider.value = Float(player.currentTime)
+        slider.maximumValue = Float(player.duration)
     }
 }
