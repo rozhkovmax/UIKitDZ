@@ -26,7 +26,6 @@ class SingInViewController: UIViewController {
         allMetod()
     }
 
-// Cоздание Image
     func createImage() {
         view.backgroundColor = .black
         singInImageView.frame = CGRect(x: 7, y: 44, width: 400, height: 275)
@@ -35,7 +34,6 @@ class SingInViewController: UIViewController {
         view.addSubview(singInImageView)
     }
 
-// Создание Lable
     func createLable() {
         singInLable.frame = CGRect(x: 45, y: 300, width: 300, height: 50)
         singInLable.textAlignment = .left
@@ -59,7 +57,6 @@ class SingInViewController: UIViewController {
         view.addSubview(passwordLable)
     }
 
-// Создание TextField
     func createTextField() {
         loginTextField.frame = CGRect(x: 45, y: 410, width: 325, height: 34)
         loginTextField.borderStyle = .line
@@ -78,7 +75,6 @@ class SingInViewController: UIViewController {
         view.addSubview(passwordTextField)
     }
 
-// Создание Button
     func createButton() {
         registrationButton.frame = CGRect(x: 92, y: 580, width: 230, height: 55)
         registrationButton.setTitle("Зарегистрироваться", for: .normal)
@@ -88,7 +84,6 @@ class SingInViewController: UIViewController {
         registrationButton.layer.cornerRadius = 10
         registrationButton.layer.borderWidth = 2
         registrationButton.layer.masksToBounds = true
-// Наблюдатель за положение кнопки перехода на экран регистрации
         registrationButton.addTarget(self, action: #selector(registrationAction), for: .touchUpInside)
         view.addSubview(registrationButton)
         
@@ -100,7 +95,6 @@ class SingInViewController: UIViewController {
         singInButton.layer.cornerRadius = 10
         singInButton.layer.borderWidth = 2
         singInButton.layer.masksToBounds = true
-// Наблюдатель за положение кнопки перехода на 2 экран
         singInButton.addTarget(self, action: #selector(singInAction), for: .touchUpInside)
         view.addSubview(singInButton)
         
@@ -114,19 +108,16 @@ class SingInViewController: UIViewController {
         productButton.layer.cornerRadius = 10
         productButton.layer.borderWidth = 2
         productButton.layer.masksToBounds = true
-// Наблюдатель за положение кнопки перехода на 2 экран
         productButton.addTarget(self, action: #selector(productAction), for: .touchUpInside)
         view.addSubview(productButton)
 
         eyeButton.frame = CGRect(x: 330, y: 480, width: 40, height: 33)
         eyeButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
         eyeButton.tintColor = .black
-// Наблюдатель за положением кнопки скрытия пароля
-        eyeButton.addTarget(self, action: #selector(eyeSecureButton), for: .touchUpInside)
+        eyeButton.addTarget(self, action: #selector(eyeSecureButtonAction), for: .touchUpInside)
         view.addSubview(eyeButton)
     }
 
-// Объединяем все вместе
     func allMetod() {
         createImage()
         createLable()
@@ -134,8 +125,7 @@ class SingInViewController: UIViewController {
         createButton()
     }
 
-// Метод для скрытия пароля
-    @objc func eyeSecureButton (sender: UIButton) {
+    @objc func eyeSecureButtonAction(sender: UIButton) {
         if passwordTextField.isSecureTextEntry {
             passwordTextField.isSecureTextEntry = false
             eyeButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
@@ -145,8 +135,7 @@ class SingInViewController: UIViewController {
         }
     }
     
-// Метод для перехода на экран регистрации
-    @objc func registrationAction (sender: UIButton) {
+    @objc func registrationAction(sender: UIButton) {
         let alertController = UIAlertController(title: "Рады приветствовать Вас!",
                                                             message: "Перейти к экрану регистрации?",
                                                             preferredStyle: .alert)
@@ -163,8 +152,7 @@ class SingInViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-// Метод для перехода на экран с товаром
-    @objc func productAction (sender: UIButton) {
+    @objc func productAction(sender: UIButton) {
         let storybord = UIStoryboard(name: "Main", bundle: nil)
         guard let creatureVC = storybord.instantiateViewController(withIdentifier: "CreatureVC")
             as? CreatureViewController else { return }
@@ -172,8 +160,7 @@ class SingInViewController: UIViewController {
         show(creatureVC, sender: nil)
     }
     
-// Метод для сравнения логина и пароля и перехода на следующий экран
-    @objc func singInAction (sender: UIButton) {
+    @objc func singInAction(sender: UIButton) {
         let email = "1"
         let password = "1"
         if loginTextField.text == email && passwordTextField.text == password {

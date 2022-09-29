@@ -13,9 +13,9 @@ class CreatureViewController: UIViewController {
                       UIImage(named: "incandescent_lamp"),
                       UIImage(named: "LED_lamp")]
     let basketButton = UIButton()
-    let priceLable = UILabel()
-    var priceArrayLable = UILabel()
-    var productDescriptionLable = UILabel()
+    let priceLabel = UILabel()
+    var priceArrayLabel = UILabel()
+    var productDescriptionLabel = UILabel()
     var segmentControl = UISegmentedControl()
     var imageView = UIImageView()
     var menuSegmentControlArray = ["Накаливания", "Люминисцентная", "Диодная"]
@@ -28,7 +28,6 @@ class CreatureViewController: UIViewController {
         allMetod()
     }
     
-// Cоздание Image
     func createImage() {
         view.backgroundColor = .black
         imageView.frame = CGRect(x: 42, y: 132, width: 330, height: 279)
@@ -37,62 +36,55 @@ class CreatureViewController: UIViewController {
         view.addSubview(imageView)
     }
     
-// Cоздание Lable
-    func createLable() {
-        priceLable.frame = CGRect(x: 40, y: 580, width: 80, height: 50)
-        priceLable.textAlignment = .left
-        priceLable.text = "Цена:"
-        priceLable.textColor = .systemRed
-        priceLable.font = priceLable.font.withSize(30)
-        view.addSubview(priceLable)
+    func createLabel() {
+        priceLabel.frame = CGRect(x: 40, y: 580, width: 80, height: 50)
+        priceLabel.textAlignment = .left
+        priceLabel.text = "Цена:"
+        priceLabel.textColor = .systemRed
+        priceLabel.font = priceLabel.font.withSize(30)
+        view.addSubview(priceLabel)
         
-        priceArrayLable.frame = CGRect(x: 170, y: 580, width: 80, height: 50)
-        priceArrayLable.textAlignment = .center
-        priceArrayLable.text = "50р."
-        priceArrayLable.textColor = .systemRed
-        priceArrayLable.font = priceArrayLable.font.withSize(30)
-        view.addSubview(priceArrayLable)
+        priceArrayLabel.frame = CGRect(x: 170, y: 580, width: 80, height: 50)
+        priceArrayLabel.textAlignment = .center
+        priceArrayLabel.text = "50р."
+        priceArrayLabel.textColor = .systemRed
+        priceArrayLabel.font = priceArrayLabel.font.withSize(30)
+        view.addSubview(priceArrayLabel)
         
-        productDescriptionLable.frame = CGRect(x: 52, y: 625, width: 310, height: 160)
-        productDescriptionLable.textAlignment = .left
-        productDescriptionLable.text = "Описание"
-        productDescriptionLable.textColor = .systemRed
-        productDescriptionLable.font = productDescriptionLable.font.withSize(25)
-        productDescriptionLable.numberOfLines = 0
-        view.addSubview(productDescriptionLable)
+        productDescriptionLabel.frame = CGRect(x: 52, y: 625, width: 310, height: 160)
+        productDescriptionLabel.textAlignment = .left
+        productDescriptionLabel.text = "Описание"
+        productDescriptionLabel.textColor = .systemRed
+        productDescriptionLabel.font = productDescriptionLabel.font.withSize(25)
+        productDescriptionLabel.numberOfLines = 0
+        view.addSubview(productDescriptionLabel)
     }
     
-// Создаем SegmentedControl
     func createSegmentControl() {
         segmentControl = UISegmentedControl(items: menuSegmentControlArray)
         segmentControl.frame = CGRect(x: 7, y: 480, width: 400, height: 31)
         segmentControl.backgroundColor = .systemRed
         segmentControl.selectedSegmentTintColor = .systemPurple
         view.addSubview(segmentControl)
-// Наблюдатель за SegmentControl
-        segmentControl.addTarget(self, action: #selector(selectedValue), for: .valueChanged)
+        segmentControl.addTarget(self, action: #selector(selectedValueAction), for: .valueChanged)
     }
     
-// Создаем Button
     func createButton() {
         basketButton.frame = CGRect(x: 340, y: 50, width: 50, height: 50)
         basketButton.setImage(UIImage(systemName: "cart"), for: .normal)
         basketButton.imageView?.tintColor = .systemRed
-// Наблюдатель за положение кнопки корзины
         basketButton.addTarget(self, action: #selector(showBasketAction), for: .touchUpInside)
         view.addSubview(basketButton)
     }
     
-// Объединяем все вместе
     func allMetod() {
         createImage()
         createSegmentControl()
         createButton()
-        createLable()
+        createLabel()
     }
     
-// Метод кнопки корзины
-    @objc func showBasketAction (sender: UIButton) {
+    @objc func showBasketAction(sender: UIButton) {
         let alertController = UIAlertController(title: "ОЙ! :(",
                                                 message: "Корзина сейчас недоступна Приносим свои извинения",
                                                 preferredStyle: .alert)
@@ -101,13 +93,12 @@ class CreatureViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-// Метод изменения SegmentControl
-    @objc func selectedValue(target: UISegmentedControl) {
+    @objc func selectedValueAction(target: UISegmentedControl) {
         if target == segmentControl {
             let segmentIndex = target.selectedSegmentIndex
             imageView.image = imageArray[segmentIndex]
-            priceArrayLable.text = priceArray[segmentIndex]
-            productDescriptionLable.text = productDescriptionArray[segmentIndex]
+            priceArrayLabel.text = priceArray[segmentIndex]
+            productDescriptionLabel.text = productDescriptionArray[segmentIndex]
         }
     }
 }

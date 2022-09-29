@@ -10,11 +10,11 @@ import UIKit
 class RegistrationViewController: UIViewController {
     
     let userImage = UIImage(named: "welcome")
-    let userNameLable = UILabel()
-    let userDateLable = UILabel()
-    let userPhoneLable = UILabel()
-    let userGenderLable = UILabel()
-    let userEmailLable = UILabel()
+    let userNameLabel = UILabel()
+    let userDateLabel = UILabel()
+    let userPhoneLabel = UILabel()
+    let userGenderLabel = UILabel()
+    let userEmailLabel = UILabel()
     let backButton = UIButton(type: .roundedRect)
     let addButton = UIButton(type: .roundedRect)
     let userNameTextField = UITextField()
@@ -34,7 +34,6 @@ class RegistrationViewController: UIViewController {
         allMetod()
     }
     
-// Создание Image
     func createImage() {
         view.backgroundColor = .black
         userImageView.frame = CGRect(x: 82, y: 92, width: 250, height: 250)
@@ -45,63 +44,58 @@ class RegistrationViewController: UIViewController {
         view.addSubview(userImageView)
     }
     
-// Создание Lable
-    func createLable() {
-        userNameLable.frame = CGRect(x: 33, y: 395, width: 80, height: 33)
-        userNameLable.textAlignment = .left
-        userNameLable.text = "Имя"
-        userNameLable.textColor = UIColor.systemBlue
-        userNameLable.font = userNameLable.font.withSize(20)
-        view.addSubview(userNameLable)
+    func createLabel() {
+        userNameLabel.frame = CGRect(x: 33, y: 395, width: 80, height: 33)
+        userNameLabel.textAlignment = .left
+        userNameLabel.text = "Имя"
+        userNameLabel.textColor = UIColor.systemBlue
+        userNameLabel.font = userNameLabel.font.withSize(20)
+        view.addSubview(userNameLabel)
         
-        userDateLable.frame = CGRect(x: 33, y: 478, width: 80, height: 33)
-        userDateLable.textAlignment = .left
-        userDateLable.text = "Дата"
-        userDateLable.textColor = UIColor.systemBlue
-        userDateLable.font = userDateLable.font.withSize(20)
-        view.addSubview(userDateLable)
+        userDateLabel.frame = CGRect(x: 33, y: 478, width: 80, height: 33)
+        userDateLabel.textAlignment = .left
+        userDateLabel.text = "Дата"
+        userDateLabel.textColor = UIColor.systemBlue
+        userDateLabel.font = userDateLabel.font.withSize(20)
+        view.addSubview(userDateLabel)
         
-        userPhoneLable.frame = CGRect(x: 33, y: 561, width: 180, height: 33)
-        userPhoneLable.textAlignment = .left
-        userPhoneLable.text = "Номер телефона"
-        userPhoneLable.textColor = UIColor.systemBlue
-        userPhoneLable.font = userPhoneLable.font.withSize(20)
-        view.addSubview(userPhoneLable)
+        userPhoneLabel.frame = CGRect(x: 33, y: 561, width: 180, height: 33)
+        userPhoneLabel.textAlignment = .left
+        userPhoneLabel.text = "Номер телефона"
+        userPhoneLabel.textColor = UIColor.systemBlue
+        userPhoneLabel.font = userPhoneLabel.font.withSize(20)
+        view.addSubview(userPhoneLabel)
         
-        userGenderLable.frame = CGRect(x: 33, y: 640, width: 80, height: 33)
-        userGenderLable.textAlignment = .left
-        userGenderLable.text = "Пол"
-        userGenderLable.textColor = UIColor.systemBlue
-        userGenderLable.font = userGenderLable.font.withSize(20)
-        view.addSubview(userGenderLable)
+        userGenderLabel.frame = CGRect(x: 33, y: 640, width: 80, height: 33)
+        userGenderLabel.textAlignment = .left
+        userGenderLabel.text = "Пол"
+        userGenderLabel.textColor = UIColor.systemBlue
+        userGenderLabel.font = userGenderLabel.font.withSize(20)
+        view.addSubview(userGenderLabel)
         
-        userEmailLable.frame = CGRect(x: 33, y: 714, width: 80, height: 33)
-        userEmailLable.textAlignment = .left
-        userEmailLable.text = "Почта"
-        userEmailLable.textColor = UIColor.systemBlue
-        userEmailLable.font = userEmailLable.font.withSize(20)
-        view.addSubview(userEmailLable)
+        userEmailLabel.frame = CGRect(x: 33, y: 714, width: 80, height: 33)
+        userEmailLabel.textAlignment = .left
+        userEmailLabel.text = "Почта"
+        userEmailLabel.textColor = UIColor.systemBlue
+        userEmailLabel.font = userEmailLabel.font.withSize(20)
+        view.addSubview(userEmailLabel)
     }
     
-// Создание Button
     func createButton() {
         backButton.frame = CGRect(x: 20, y: 30, width: 92, height: 45)
         backButton.setTitle("Отмена", for: .normal)
         backButton.tintColor = .systemBlue
-// Наблюдатель за положение кнопки перехода на предыдущий экран
         backButton.addTarget(self, action: #selector(goBackAction), for: .touchUpInside)
         view.addSubview(backButton)
         
         addButton.frame = CGRect(x: 302, y: 30, width: 92, height: 45)
         addButton.setTitle("Добавить", for: .normal)
         addButton.tintColor = .systemBlue
-// Наблюдатель за положение кнопки перехода на предыдущий экран
         addButton.addTarget(self, action: #selector(addAction), for: .touchUpInside)
         view.addSubview(addButton)
         
     }
     
-// Создание TextField
     func createTextField() {
         userNameTextField.frame = CGRect(x: 20, y: 431, width: 374, height: 34)
         userNameTextField.borderStyle = .line
@@ -141,12 +135,10 @@ class RegistrationViewController: UIViewController {
         userEmailTextField.layer.borderWidth = 2
         userEmailTextField.layer.masksToBounds = true
         userEmailTextField.backgroundColor = .systemBlue
-// Наблюдатель для вызова Алерта
         userEmailTextField.addTarget(self, action: #selector(showEmailAlertAction), for: .touchDown)
         view.addSubview(userEmailTextField)
     }
     
-// Picker
     func createPicker() {
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.datePickerMode = .date
@@ -157,11 +149,9 @@ class RegistrationViewController: UIViewController {
         genderPicker.delegate = self
     }
     
-// Создаем кнопку Done DatePicker
     func toolbarDatePicker() {
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-// Наблюдатель за DatePicker
         let doneButton = UIBarButtonItem(barButtonSystemItem: .done,
                                          target: self, action: #selector(datePickerChange))
         toolbar.setItems([doneButton], animated: true)
@@ -169,23 +159,20 @@ class RegistrationViewController: UIViewController {
         userDateTextField.inputView = datePicker
     }
     
-// Объединяем все вместе
     func allMetod() {
         createImage()
-        createLable()
+        createLabel()
         createButton()
         createTextField()
         createPicker()
         toolbarDatePicker()
     }
     
-// Метод кнопки возвращения на предыдущий экран
-    @objc func goBackAction (sender: UIButton) {
+    @objc func goBackAction(sender: UIButton) {
         dismiss(animated: true)
     }
     
-// Метод для перехода на экран с товаром
-    @objc func addAction (sender: UIButton) {
+    @objc func addAction(sender: UIButton) {
         let storybord = UIStoryboard(name: "Main", bundle: nil)
         guard let creatureVC = storybord.instantiateViewController(withIdentifier: "CreatureVC")
                 as? CreatureViewController else { return }
@@ -193,7 +180,6 @@ class RegistrationViewController: UIViewController {
         show(creatureVC, sender: nil)
     }
     
-// Метод изменения DatePicker
     @objc func datePickerChange() {
         let format = DateFormatter()
         format.dateStyle = .long
@@ -202,8 +188,7 @@ class RegistrationViewController: UIViewController {
         view.endEditing(true)
     }
     
-// Метод для alert почты
-    @objc func showEmailAlertAction (sender: UITextField) {
+    @objc func showEmailAlertAction(sender: UITextField) {
         let alertController = UIAlertController(title: "Почта",
                                                 message: "Введите электронный адрес",
                                                 preferredStyle: .alert)
@@ -219,7 +204,7 @@ class RegistrationViewController: UIViewController {
     }
 }
 
-// Расширения для PickerView
+/// UIPickerViewDataSource, UIPickerViewDelegate
 extension RegistrationViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
