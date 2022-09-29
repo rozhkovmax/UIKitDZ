@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/// ContactListViewController
+/// Контроллер с контактами
 class ContactListViewController: UIViewController {
     
     let personOneImage = UIImage(named: "personOne")
@@ -30,18 +30,11 @@ class ContactListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Birthday"
-        
-        creationPersonOne()
-        creationPersonTwo()
-        creationPersonThree()
-        
-        addBarButton()
+        allMetod()
     }
     
 // Cоздание макета для персоны 1
-    func creationPersonOne() {
+    func createPersonOne() {
         personOneImageView.frame = CGRect(x: 39, y: 150, width: 140, height: 140)
         personOneImageView.contentMode = .scaleAspectFill
         personOneImageView.layer.cornerRadius = 70
@@ -75,7 +68,7 @@ class ContactListViewController: UIViewController {
     }
     
 // Cоздание макета для персоны 2
-    func creationPersonTwo() {
+    func createPersonTwo() {
         personTwoImageView.frame = CGRect(x: 39, y: 298, width: 140, height: 140)
         personTwoImageView.contentMode = .scaleAspectFill
         personTwoImageView.layer.cornerRadius = 70
@@ -109,7 +102,7 @@ class ContactListViewController: UIViewController {
     }
     
 // Cоздание макета для персоны 3
-    func creationPersonThree() {
+    func createPersonThree() {
         personThreeImageView.frame = CGRect(x: 39, y: 446, width: 140, height: 140)
         personThreeImageView.contentMode = .scaleAspectFill
         personThreeImageView.layer.cornerRadius = 70
@@ -144,15 +137,23 @@ class ContactListViewController: UIViewController {
     
 // Создания кнопки добавть(+)
     func addBarButton() {
-        let barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItem))
+        let barButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItemAction))
             navigationItem.rightBarButtonItem = barButton
     }
     
+    func allMetod() {
+        title = "Birthday"
+        createPersonOne()
+        createPersonTwo()
+        createPersonThree()
+        addBarButton()
+    }
+    
 // Метод для перехода на 3 экран
-    @objc func addItem() {
+    @objc func addItemAction() {
         let storybord = UIStoryboard(name: "Main", bundle: nil)
-            guard let addContact = storybord.instantiateViewController(withIdentifier: "addContactViewController")
+        guard let addContact = storybord.instantiateViewController(withIdentifier: "addContactViewController")
                     as? AddContactViewController else { return }
-            self.present(addContact, animated: true)
+        present(addContact, animated: true)
     }
 }

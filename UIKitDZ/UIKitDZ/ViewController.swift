@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/// SingInViewController
+/// Контроллер для входа в приложение
 class SingInViewController: UIViewController {
 
     let loginTextField = UITextField()
@@ -21,15 +21,11 @@ class SingInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        creationImage()
-        creationLable()
-        creationTextField()
-        creationButton()
+        allMetod()
     }
     
 // Cоздание Image
-    func creationImage() {
+    func createImage() {
         singInImageView.frame = CGRect(x: 72, y: 80, width: 270, height: 160)
         singInImageView.contentMode = .scaleAspectFill
         singInImageView.image = singInImage
@@ -37,7 +33,7 @@ class SingInViewController: UIViewController {
     }
     
 // Создание Lable
-    func creationLable() {
+    func createLable() {
         singInLable.frame = CGRect(x: 45, y: 300, width: 80, height: 50)
         singInLable.textAlignment = .left
         singInLable.text = "Вход"
@@ -60,7 +56,7 @@ class SingInViewController: UIViewController {
     }
     
 // Создание TextField
-    func creationTextField() {
+    func createTextField() {
         loginTextField.frame = CGRect(x: 45, y: 410, width: 325, height: 34)
         loginTextField.borderStyle = .line
         view.addSubview(loginTextField)
@@ -71,25 +67,32 @@ class SingInViewController: UIViewController {
     }
     
 // Создание Button
-    func creationButton() {
+    func createButton() {
         singInButton.frame = CGRect(x: 92, y: 680, width: 230, height: 55)
         singInButton.setTitle("Войти", for: .normal)
         singInButton.tintColor = .black
         singInButton.backgroundColor = .systemBlue
 // Наблюдатель за положение кнопки перехода на следующий экран
-        singInButton.addTarget(self, action: #selector(singInNextButton), for: .touchUpInside)
+        singInButton.addTarget(self, action: #selector(singInNextAction), for: .touchUpInside)
         view.addSubview(singInButton)
         
         eyeButton.frame = CGRect(x: 330, y: 480, width: 40, height: 33)
         eyeButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
         eyeButton.tintColor = .systemBlue
 // Наблюдатель за положением кнопки скрытия пароля
-        eyeButton.addTarget(self, action: #selector(eyeSecureButton), for: .touchUpInside)
+        eyeButton.addTarget(self, action: #selector(eyeSecureAction), for: .touchUpInside)
         view.addSubview(eyeButton)
     }
     
+    func allMetod() {
+        createImage()
+        createLable()
+        createTextField()
+        createButton()
+    }
+    
 // Метод для скрытия пароля
-    @objc func eyeSecureButton (sender: UIButton) {
+    @objc func eyeSecureAction(sender: UIButton) {
         if passwordTextField.isSecureTextEntry {
             passwordTextField.isSecureTextEntry = false
             eyeButton.setImage(UIImage(systemName: "eye.fill"), for: .normal)
@@ -100,7 +103,7 @@ class SingInViewController: UIViewController {
     }
     
 // Метод для сравнения логина и пароля и перехода на следующий экран
-    @objc func singInNextButton (sender: UIButton) {
+    @objc func singInNextAction(sender: UIButton) {
         let email = "1"
         let password = "1"
         if loginTextField.text == email && passwordTextField.text == password {
@@ -108,15 +111,15 @@ class SingInViewController: UIViewController {
             guard let contactList = storybord.instantiateViewController(withIdentifier: "contactListViewController")
                     as? ContactListViewController else { return }
             contactList.modalPresentationStyle = .fullScreen
-            self.show(contactList, sender: nil)
+            show(contactList, sender: nil)
 
         } else {
-            let alertControllerSingIn = UIAlertController(title: "Внимание!",
+            let alertController = UIAlertController(title: "Внимание!",
                                                              message: "Введен неверный логин и/или пароль",
                                                              preferredStyle: .alert)
-            let actionAlertControllerSingIn = UIAlertAction(title: "Ok", style: .default)
-            alertControllerSingIn.addAction(actionAlertControllerSingIn)
-            present(alertControllerSingIn, animated: true, completion: nil)
+            let alertControllerAction = UIAlertAction(title: "Ok", style: .default)
+            alertController.addAction(alertControllerAction)
+            present(alertController, animated: true, completion: nil)
         }
     }
 }

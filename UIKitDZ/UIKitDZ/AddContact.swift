@@ -6,7 +6,7 @@
 //
 
 import UIKit
-/// AddContactViewController
+/// Контроллер для добавления новых контактов
 class AddContactViewController: UIViewController {
 
     let userImage = UIImage(named: "user")
@@ -33,18 +33,11 @@ class AddContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        creationImage()
-        creationLable()
-        creationButton()
-        creationTextField()
-        
-        creationPicker()
-        toolbarDatePicker()
+        allMetod()
     }
 
 // Создание Image
-    func creationImage() {
+    func createImage() {
         userImageView.frame = CGRect(x: 137, y: 174, width: 140, height: 140)
         userImageView.contentMode = .scaleAspectFill
         userImageView.layer.cornerRadius = 70
@@ -54,7 +47,7 @@ class AddContactViewController: UIViewController {
     }
     
 // Создание Lable
-    func creationLable() {
+    func createLable() {
         userNameLable.frame = CGRect(x: 33, y: 395, width: 80, height: 33)
         userNameLable.textAlignment = .left
         userNameLable.text = "Имя"
@@ -92,12 +85,12 @@ class AddContactViewController: UIViewController {
     }
     
 // Создание Button
-    func creationButton() {
+    func createButton() {
         backButton.frame = CGRect(x: 20, y: 105, width: 92, height: 45)
         backButton.setTitle("Отмена", for: .normal)
         backButton.tintColor = .systemBlue
 // Наблюдатель за положение кнопки перехода на предыдущий экран
-        backButton.addTarget(self, action: #selector(goBackButton), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(goBackAction), for: .touchUpInside)
         view.addSubview(backButton)
         
         addButton.frame = CGRect(x: 302, y: 105, width: 92, height: 45)
@@ -112,7 +105,7 @@ class AddContactViewController: UIViewController {
     }
     
 // Создание TextField
-    func creationTextField() {
+    func createTextField() {
         userNameTextField.frame = CGRect(x: 20, y: 431, width: 374, height: 34)
         userNameTextField.borderStyle = .line
         view.addSubview(userNameTextField)
@@ -132,12 +125,12 @@ class AddContactViewController: UIViewController {
         userInstagramTextField.frame = CGRect(x: 20, y: 755, width: 374, height: 34)
         userInstagramTextField.borderStyle = .line
 // Наблюдатель для вызова Алерта
-        userInstagramTextField.addTarget(self, action: #selector(instaAction), for: .touchDown)
+        userInstagramTextField.addTarget(self, action: #selector(showInstagramAlertAction), for: .touchDown)
         view.addSubview(userInstagramTextField)
     }
     
 // Picker
-    func creationPicker() {
+    func createPicker() {
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.datePickerMode = .date
         
@@ -152,9 +145,13 @@ class AddContactViewController: UIViewController {
         genderPicker.delegate = self
     }
     
-// Метод кнопки возвращения на предыдущий экран
-    @objc func goBackButton (sender: UIButton) {
-        dismiss(animated: true)
+    func allMetod() {
+        createImage()
+        createLable()
+        createButton()
+        createTextField()
+        createPicker()
+        toolbarDatePicker()
     }
 
 // Создаем кнопку Done DatePicker
@@ -169,30 +166,35 @@ class AddContactViewController: UIViewController {
         userDateTextField.inputView = datePicker
     }
     
+// Метод кнопки возвращения на предыдущий экран
+    @objc func goBackAction (sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
 // Метод изменения DatePicker
     @objc func datePickerChange() {
         let format = DateFormatter()
         format.dateStyle = .long
         format.timeStyle = .none
         userDateTextField.text = format.string(from: datePicker.date)
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 
 // Метод для alert Инстаграма
-    @objc func instaAction (sender: UITextField) {
-        let alertControllerInstagram = UIAlertController(title: "Instagram",
+    @objc func showInstagramAlertAction (sender: UITextField) {
+        let alertController = UIAlertController(title: "Instagram",
                                                          message: "Введен логин",
                                                          preferredStyle: .alert)
-        let actionOkAlertControllerInstagram = UIAlertAction(title: "Ok", style: .default) { _ in
-            let textField = alertControllerInstagram.textFields?.first
-            self.userInstagramTextField.text = textField?.text
+        let alertControllerOkAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            guard let textField = alertController.textFields?.first else { return }
+            textField.placeholder = "Например @rozhkovmax"
+            self.userInstagramTextField.text = textField.text
         }
-        let actionCancelAlertControllerInstagram = UIAlertAction(title: "Cancel", style: .default)
-        alertControllerInstagram.addTextField()
-        alertControllerInstagram.textFields?[0].placeholder = "Например @rozhkovmax"
-        alertControllerInstagram.addAction(actionCancelAlertControllerInstagram)
-        alertControllerInstagram.addAction(actionOkAlertControllerInstagram)
-        present(alertControllerInstagram, animated: true, completion: nil)
+        let alertControllerCancelAction = UIAlertAction(title: "Cancel", style: .default)
+        alertController.addTextField()
+        alertController.addAction(alertControllerCancelAction)
+        alertController.addAction(alertControllerOkAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
 
@@ -203,36 +205,39 @@ extension AddContactViewController: UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == 1 {
+        switch pickerView.tag {
+        case 1:
             return 100
-        }
-        if pickerView.tag == 2 {
+        case 2:
             return gender.count
-        }
+        default:
         return 1
+        }
     }
 }
 
 extension AddContactViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if pickerView.tag == 1 {
-            let result = "\(row)"
-            return result
-        }
-        if pickerView.tag == 2 {
+        switch pickerView.tag {
+        case 1:
+            return "\(row)"
+        case 2:
             return gender[row]
-        }
+        default:
         return ""
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.tag == 1 {
+        switch pickerView.tag {
+        case 1:
             userAgeTextField.text = "\(row)"
-            self.view.endEditing(true)
-        }
-        if pickerView.tag == 2 {
+            view.endEditing(true)
+        case 2:
             userGenderTextField.text = gender[row]
-            self.view.endEditing(true)
+            view.endEditing(true)
+        default:
+            return
         }
     }
 }
