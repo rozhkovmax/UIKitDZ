@@ -44,7 +44,7 @@ final class SingInViewController: UIViewController {
     }
     
     func createLabel() {
-        imageLabel.frame = CGRect(x: 182, y: 133, width: 50, height: 21)
+        imageLabel.frame = CGRect(x: 182, y: 143, width: 50, height: 21)
         imageLabel.textAlignment = .center
         imageLabel.text = "Bringo"
         imageLabel.textColor = .link
@@ -65,13 +65,13 @@ final class SingInViewController: UIViewController {
     
     func createTextField() {
         emailTextField.frame = CGRect(x: 55, y: 388, width: 304, height: 34)
-        emailTextField.borderStyle = .roundedRect
         emailTextField.keyboardType = .numberPad
+        emailTextField.placeholder = "+79000000000"
         view.addSubview(emailTextField)
         
         passwordTextField.frame = CGRect(x: 55, y: 508, width: 304, height: 34)
-        passwordTextField.borderStyle = .roundedRect
         passwordTextField.isSecureTextEntry = true
+        passwordTextField.placeholder = "password"
         view.addSubview(passwordTextField)
     }
     
@@ -83,18 +83,9 @@ final class SingInViewController: UIViewController {
     }
     
     @objc func singInAction(parametrSender: Any) {
-        let email = "1"
-        let password = "1"
-        if emailTextField.text == email && passwordTextField.text == password {
-            let foodSelectionVC = FoodSelectionViewController()
-            navigationController?.pushViewController((foodSelectionVC), animated: true)
-        } else {
-            let alertController = UIAlertController(title: "Внимание!",
-                                                    message: "Введен неверный адрес почты и/или пароль",
-                                                    preferredStyle: .alert)
-            let alertControllerAction = UIAlertAction(title: "Ok", style: .default)
-            alertController.addAction(alertControllerAction)
-            present(alertController, animated: true, completion: nil)
-        }
+            let foodSelectVC = FoodSelectViewController()
+            let navigationController = UINavigationController(rootViewController: foodSelectVC)
+            navigationController.modalPresentationStyle = .fullScreen
+            present(navigationController, animated: false)
     }
 }

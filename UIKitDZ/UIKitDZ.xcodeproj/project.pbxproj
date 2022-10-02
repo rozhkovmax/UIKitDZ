@@ -15,6 +15,10 @@
 		941F912028DCBCB500127005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941F911E28DCBCB500127005 /* LaunchScreen.storyboard */; };
 		94EF289D28E45FED0030A908 /* FoodSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF289C28E45FED0030A908 /* FoodSelectionViewController.swift */; };
 		94EF289F28E5AF930030A908 /* PizzaSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF289E28E5AF930030A908 /* PizzaSelectionViewController.swift */; };
+		94EF28E728E833580030A908 /* PizzaInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF28E628E833580030A908 /* PizzaInfo.swift */; };
+		94EF28E928E83FD50030A908 /* AddIngredientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF28E828E83FD50030A908 /* AddIngredientViewController.swift */; };
+		94EF28EB28E8525A0030A908 /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF28EA28E8525A0030A908 /* CheckViewController.swift */; };
+		94EF28ED28E8E7C40030A908 /* CaloriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF28EC28E8E7C40030A908 /* CaloriesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		941F912128DCBCB500127005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94EF289C28E45FED0030A908 /* FoodSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionViewController.swift; sourceTree = "<group>"; };
 		94EF289E28E5AF930030A908 /* PizzaSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaSelectionViewController.swift; sourceTree = "<group>"; };
+		94EF28E628E833580030A908 /* PizzaInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzaInfo.swift; sourceTree = "<group>"; };
+		94EF28E828E83FD50030A908 /* AddIngredientViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIngredientViewController.swift; sourceTree = "<group>"; };
+		94EF28EA28E8525A0030A908 /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
+		94EF28EC28E8E7C40030A908 /* CaloriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +73,10 @@
 				941F911728DCBCB300127005 /* SingInViewController.swift */,
 				94EF289C28E45FED0030A908 /* FoodSelectionViewController.swift */,
 				94EF289E28E5AF930030A908 /* PizzaSelectionViewController.swift */,
+				94EF28E828E83FD50030A908 /* AddIngredientViewController.swift */,
+				94EF28EC28E8E7C40030A908 /* CaloriesViewController.swift */,
+				94EF28EA28E8525A0030A908 /* CheckViewController.swift */,
+				94EF28E628E833580030A908 /* PizzaInfo.swift */,
 				941F911928DCBCB300127005 /* Main.storyboard */,
 				941F911C28DCBCB500127005 /* Assets.xcassets */,
 				941F911E28DCBCB500127005 /* LaunchScreen.storyboard */,
@@ -167,9 +179,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				94EF289F28E5AF930030A908 /* PizzaSelectionViewController.swift in Sources */,
+				94EF28EB28E8525A0030A908 /* CheckViewController.swift in Sources */,
 				94EF289D28E45FED0030A908 /* FoodSelectionViewController.swift in Sources */,
+				94EF28ED28E8E7C40030A908 /* CaloriesViewController.swift in Sources */,
 				941F911828DCBCB300127005 /* SingInViewController.swift in Sources */,
 				941F911428DCBCB300127005 /* AppDelegate.swift in Sources */,
+				94EF28E928E83FD50030A908 /* AddIngredientViewController.swift in Sources */,
+				94EF28E728E833580030A908 /* PizzaInfo.swift in Sources */,
 				941F911628DCBCB300127005 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
