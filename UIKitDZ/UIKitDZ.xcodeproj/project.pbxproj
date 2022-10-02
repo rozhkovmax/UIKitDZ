@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		941F911428DCBCB300127005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F911328DCBCB300127005 /* AppDelegate.swift */; };
 		941F911628DCBCB300127005 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F911528DCBCB300127005 /* SceneDelegate.swift */; };
-		941F911828DCBCB300127005 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F911728DCBCB300127005 /* ViewController.swift */; };
+		941F911828DCBCB300127005 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941F911728DCBCB300127005 /* TimerViewController.swift */; };
 		941F911B28DCBCB300127005 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941F911928DCBCB300127005 /* Main.storyboard */; };
 		941F911D28DCBCB500127005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 941F911C28DCBCB500127005 /* Assets.xcassets */; };
 		941F912028DCBCB500127005 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 941F911E28DCBCB500127005 /* LaunchScreen.storyboard */; };
+		94EF28EF28E9EC6D0030A908 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EF28EE28E9EC6D0030A908 /* AlarmViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		941F911028DCBCB300127005 /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		941F911328DCBCB300127005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		941F911528DCBCB300127005 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		941F911728DCBCB300127005 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		941F911728DCBCB300127005 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		941F911A28DCBCB300127005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		941F911C28DCBCB500127005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		941F911F28DCBCB500127005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		941F912128DCBCB500127005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94EF28EE28E9EC6D0030A908 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +60,9 @@
 			children = (
 				941F911328DCBCB300127005 /* AppDelegate.swift */,
 				941F911528DCBCB300127005 /* SceneDelegate.swift */,
-				941F911728DCBCB300127005 /* ViewController.swift */,
+				941F911728DCBCB300127005 /* TimerViewController.swift */,
 				941F911928DCBCB300127005 /* Main.storyboard */,
+				94EF28EE28E9EC6D0030A908 /* AlarmViewController.swift */,
 				941F911C28DCBCB500127005 /* Assets.xcassets */,
 				941F911E28DCBCB500127005 /* LaunchScreen.storyboard */,
 				941F912128DCBCB500127005 /* Info.plist */,
@@ -160,7 +163,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				941F911828DCBCB300127005 /* ViewController.swift in Sources */,
+				94EF28EF28E9EC6D0030A908 /* AlarmViewController.swift in Sources */,
+				941F911828DCBCB300127005 /* TimerViewController.swift in Sources */,
 				941F911428DCBCB300127005 /* AppDelegate.swift in Sources */,
 				941F911628DCBCB300127005 /* SceneDelegate.swift in Sources */,
 			);
