@@ -7,12 +7,12 @@
 
 import UIKit
 /// Контроллер колорийности
-class CaloriesViewController: UIViewController {
+final class CaloriesViewController: UIViewController {
 
-    let backButton = UIButton(type: .roundedRect)
-    let nameLable = UILabel()
-    let orderLabel = UILabel()
-    let textLable = UILabel()
+    private let backButton = UIButton(type: .roundedRect)
+    private let nameLable = UILabel()
+    private let orderLabel = UILabel()
+    private let textLable = UILabel()
     var pizza: Pizza?
     
     override func viewDidLoad() {
@@ -20,7 +20,7 @@ class CaloriesViewController: UIViewController {
         allMethod()
     }
     
-    func createButton() {
+    private func createButton() {
         backButton.frame = CGRect(x: 46, y: 44, width: 30, height: 30)
         backButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
         backButton.tintColor = .black
@@ -28,7 +28,7 @@ class CaloriesViewController: UIViewController {
         view.addSubview(backButton)
     }
     
-    func createLable() {
+    private func createLable() {
         nameLable.frame = CGRect(x: 98, y: 93, width: 219, height: 60)
         nameLable.backgroundColor = .orange
         nameLable.textColor = .white
@@ -52,7 +52,7 @@ class CaloriesViewController: UIViewController {
         view.addSubview(textLable)
     }
     
-    func createLabelText() {
+    private func createLabelText() {
         if nameLable.text == "Маргарита" {
             textLable.text = "Общая коллорийность = 203 кКал"
         } else {
@@ -60,7 +60,7 @@ class CaloriesViewController: UIViewController {
         }
     }
     
-    func allMethod() {
+    private func allMethod() {
         view.backgroundColor = .white
         createButton()
         createLable()

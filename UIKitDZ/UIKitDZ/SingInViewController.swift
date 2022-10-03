@@ -9,28 +9,28 @@ import UIKit
 /// Контроллер входа в приложение
 final class SingInViewController: UIViewController {
 
-    let emailTextField = UITextField()
-    let passwordTextField = UITextField()
-    let imageLabel = UILabel()
-    let emailLabel = UILabel()
-    let passwordLabel = UILabel()
-    let singInButton = UIButton(type: .roundedRect)
-    let singInImage = UIImage(systemName: "icloud.fill")
-    var singInImageView = UIImageView()
+    private let emailTextField = UITextField()
+    private let passwordTextField = UITextField()
+    private let imageLabel = UILabel()
+    private let emailLabel = UILabel()
+    private let passwordLabel = UILabel()
+    private let singInButton = UIButton(type: .roundedRect)
+    private let singInImage = UIImage(systemName: "icloud.fill")
+    private var singInImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         allMetod()
     }
     
-    func createImage() {
+    private func createImageView() {
         singInImageView.frame = CGRect(x: 126, y: 83, width: 162, height: 119)
         singInImageView.tintColor = .systemGray2
         singInImageView.image = singInImage
         view.addSubview(singInImageView)
      }
     
-    func createButton() {
+    private func createButton() {
         singInButton.frame = CGRect(x: 79, y: 691, width: 257, height: 48)
         singInButton.setTitle("Войти", for: .normal)
         singInButton.tintColor = .white
@@ -43,7 +43,7 @@ final class SingInViewController: UIViewController {
         view.addSubview(singInButton)
     }
     
-    func createLabel() {
+    private func createLabel() {
         imageLabel.frame = CGRect(x: 182, y: 143, width: 50, height: 21)
         imageLabel.textAlignment = .center
         imageLabel.text = "Bringo"
@@ -63,7 +63,7 @@ final class SingInViewController: UIViewController {
         view.addSubview(passwordLabel)
     }
     
-    func createTextField() {
+    private func createTextField() {
         emailTextField.frame = CGRect(x: 55, y: 388, width: 304, height: 34)
         emailTextField.keyboardType = .numberPad
         emailTextField.placeholder = "+79000000000"
@@ -75,14 +75,14 @@ final class SingInViewController: UIViewController {
         view.addSubview(passwordTextField)
     }
     
-    func allMetod() {
-        createImage()
+    private func allMetod() {
+        createImageView()
         createButton()
         createLabel()
         createTextField()
     }
     
-    @objc func singInAction(parametrSender: Any) {
+    @objc private func singInAction(parametrSender: Any) {
             let foodSelectVC = FoodSelectViewController()
             let navigationController = UINavigationController(rootViewController: foodSelectVC)
             navigationController.modalPresentationStyle = .fullScreen

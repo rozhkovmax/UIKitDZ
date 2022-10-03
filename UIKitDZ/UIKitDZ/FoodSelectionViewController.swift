@@ -9,15 +9,15 @@ import UIKit
 ///  Контроллер выбора еды
 final class FoodSelectViewController: UIViewController {
 
-    let pizzaButton = UIButton(type: .roundedRect)
-    let sushiButton = UIButton(type: .roundedRect)
+    private let pizzaButton = UIButton(type: .roundedRect)
+    private let sushiButton = UIButton(type: .roundedRect)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         createButton()
     }
     
-    func createButton() {
+    private func createButton() {
         title = "Food"
         pizzaButton.frame = CGRect(x: 51, y: 145, width: 312, height: 119)
         pizzaButton.layer.borderWidth = 1
@@ -35,7 +35,7 @@ final class FoodSelectViewController: UIViewController {
         view.addSubview(sushiButton)
     }
     
-    @objc func showPizzaSelectVCAction() {
+    @objc private func showPizzaSelectVCAction() {
         let pizzaSelectVC = PizzaSelectViewController()
         navigationController?.pushViewController(pizzaSelectVC, animated: false)
     }

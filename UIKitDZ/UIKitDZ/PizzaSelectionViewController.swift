@@ -9,31 +9,31 @@ import UIKit
 ///  Контроллер выбора пиццы
 final class PizzaSelectViewController: UIViewController {
 
-    let pizzaNameOneLabel = UILabel()
-    let pizzaNameTwoLabel = UILabel()
-    let pizzaOneButton = UIButton(type: .roundedRect)
-    let pizzaTwoButton = UIButton(type: .roundedRect)
-    let pizzaOne = Pizza(pizzaName: "Маргарита", pizzaImage: "margarita")
-    let pizzaTwo = Pizza(pizzaName: "Пеперони", pizzaImage: "peperoni")
-    var pizzaOneImageView = UIImageView()
-    var pizzaTwoImageView = UIImageView()
+    private let pizzaNameOneLabel = UILabel()
+    private let pizzaNameTwoLabel = UILabel()
+    private let pizzaOneButton = UIButton(type: .roundedRect)
+    private let pizzaTwoButton = UIButton(type: .roundedRect)
+    let pizzaOne = Pizza(pizzaName: "Маргарита", pizzaImageName: "margarita")
+    let pizzaTwo = Pizza(pizzaName: "Пеперони", pizzaImageName: "peperoni")
+    private var pizzaOneImageView = UIImageView()
+    private var pizzaTwoImageView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         allMetod()
     }
 
-    func createImage() {
+    private func createImageView() {
         pizzaOneImageView.frame = CGRect(x: 42, y: 155, width: 150, height: 150)
-        pizzaOneImageView.image = UIImage(named: pizzaOne.pizzaImage ?? "")
+        pizzaOneImageView.image = UIImage(named: pizzaOne.pizzaImageName ?? "")
         view.addSubview(pizzaOneImageView)
         
         pizzaTwoImageView.frame = CGRect(x: 42, y: 356, width: 150, height: 150)
-        pizzaTwoImageView.image = UIImage(named: pizzaTwo.pizzaImage ?? "")
+        pizzaTwoImageView.image = UIImage(named: pizzaTwo.pizzaImageName ?? "")
         view.addSubview(pizzaTwoImageView)
      }
     
-    func createButton() {
+    private func createButton() {
         pizzaOneButton.frame = CGRect(x: 308, y: 202, width: 57, height: 57)
         pizzaOneButton.setImage(UIImage(systemName: "plus"), for: .normal)
         pizzaOneButton.tintColor = .white
@@ -55,7 +55,7 @@ final class PizzaSelectViewController: UIViewController {
         view.addSubview(pizzaTwoButton)
     }
     
-    func createLabel() {
+    private func createLabel() {
         pizzaNameOneLabel.frame = CGRect(x: 200, y: 211, width: 100, height: 40)
         pizzaNameOneLabel.textAlignment = .left
         pizzaNameOneLabel.text = pizzaOne.pizzaName
@@ -71,25 +71,25 @@ final class PizzaSelectViewController: UIViewController {
         view.addSubview(pizzaNameTwoLabel)
     }
     
-    func navigationItem() {
+    private func navigationItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"),
                                                            style: .done,
                                                            target: self, action: #selector(backBarButtonAction))
     }
     
-    func allMetod() {
+    private func allMetod() {
         title = "Pizza"
-        createImage()
+        createImageView()
         createButton()
         createLabel()
         navigationItem()
     }
     
-    @objc func backBarButtonAction() {
+    @objc private func backBarButtonAction() {
         navigationController?.popViewController(animated: false)
     }
     
-    @objc func plusButtonAction() {
+    @objc private func plusButtonAction() {
         let addIngredientVC = AddIngredientViewController()
         if pizzaOneButton.isTouchInside {
         addIngredientVC.pizza = pizzaOne

@@ -13,18 +13,18 @@ import UIKit
 /// Контроллер добавления дополнительных ингредиентов
 final class AddIngredientViewController: UIViewController {
 
-    let ingredientCheesLabel = UILabel()
-    let ingredieHamtHLabel = UILabel()
-    let ingredientMashroomLabel = UILabel()
-    let ingredientOliveLabel = UILabel()
-    let pizzaNameLabel = UILabel()
-    let chooseButton = UIButton(type: .roundedRect)
-    let ingredientCheesSwitch = UISwitch()
-    let ingredientHamSwitch = UISwitch()
-    let ingredientMashroomSwitch = UISwitch()
-    let ingredientOliveSwitch = UISwitch()
-    let caloriesButton = UIButton(type: .roundedRect)
-    var pizzaImageView = UIImageView()
+    private let ingredientCheesLabel = UILabel()
+    private let ingredieHamtHLabel = UILabel()
+    private let ingredientMashroomLabel = UILabel()
+    private let ingredientOliveLabel = UILabel()
+    private let pizzaNameLabel = UILabel()
+    private let chooseButton = UIButton(type: .roundedRect)
+    private let ingredientCheesSwitch = UISwitch()
+    private let ingredientHamSwitch = UISwitch()
+    private let ingredientMashroomSwitch = UISwitch()
+    private let ingredientOliveSwitch = UISwitch()
+    private let caloriesButton = UIButton(type: .roundedRect)
+    private var pizzaImageView = UIImageView()
     var pizza: Pizza?
     
     override func viewDidLoad() {
@@ -32,13 +32,13 @@ final class AddIngredientViewController: UIViewController {
         allMetod()
     }
 
-    func createImage() {
+    private func createImage() {
         pizzaImageView.frame = CGRect(x: 82, y: 209, width: 250, height: 250)
-        pizzaImageView.image = UIImage(named: pizza?.pizzaImage ?? "")
+        pizzaImageView.image = UIImage(named: pizza?.pizzaImageName ?? "")
         view.addSubview(pizzaImageView)
      }
     
-    func createButton() {
+    private func createButton() {
         chooseButton.frame = CGRect(x: 82, y: 750, width: 98, height: 45)
         chooseButton.setTitle("Выбрать", for: .normal)
         chooseButton.tintColor = .white
@@ -62,7 +62,7 @@ final class AddIngredientViewController: UIViewController {
         view.addSubview(caloriesButton)
     }
     
-    func createLabel() {
+    private func createLabel() {
         pizzaNameLabel.frame = CGRect(x: 90, y: 106, width: 235, height: 50)
         pizzaNameLabel.textAlignment = .center
         pizzaNameLabel.text = pizza?.pizzaName ?? ""
@@ -99,7 +99,7 @@ final class AddIngredientViewController: UIViewController {
         view.addSubview(ingredientOliveLabel)
     }
     
-    func createSwitch() {
+    private func createSwitch() {
         ingredientCheesSwitch.frame = CGRect(x: 285, y: 499, width: 49, height: 31)
         view.addSubview(ingredientCheesSwitch)
         ingredientHamSwitch.frame = CGRect(x: 285, y: 557, width: 49, height: 31)
@@ -110,7 +110,7 @@ final class AddIngredientViewController: UIViewController {
         view.addSubview(ingredientOliveSwitch)
     }
     
-    func allMetod() {
+    private func allMetod() {
         view.backgroundColor = .white
         createImage()
         createButton()
@@ -118,20 +118,20 @@ final class AddIngredientViewController: UIViewController {
         createSwitch()
     }
     
-    @objc func caloriesButtonAction() {
+    @objc private func caloriesButtonAction() {
         let caloriesVC = CaloriesViewController()
         caloriesVC.pizza = pizza
         present(caloriesVC, animated: false)
     }
     
-    @objc func checkButtonAction() {
+    @objc private func checkButtonAction() {
         let checkVC = CheckViewController()
         checkVC.delegate = self
         checkVC.pizza = pizza
-        checkVC.addChees = ingredientCheesSwitch.isOn
-        checkVC.addHam = ingredientHamSwitch.isOn
-        checkVC.addMashroom = ingredientMashroomSwitch.isOn
-        checkVC.addOlive = ingredientOliveSwitch.isOn
+        checkVC.isAddChees = ingredientCheesSwitch.isOn
+        checkVC.isAddHam = ingredientHamSwitch.isOn
+        checkVC.isAddMashroom = ingredientMashroomSwitch.isOn
+        checkVC.isAddOlive = ingredientOliveSwitch.isOn
         let navigationController = UINavigationController(rootViewController: checkVC)
         navigationController.modalPresentationStyle = .fullScreen
         present(navigationController, animated: false)

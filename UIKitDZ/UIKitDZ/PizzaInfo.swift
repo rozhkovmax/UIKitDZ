@@ -9,5 +9,5 @@ import Foundation
 ///  Структура информации о пицце
 struct Pizza {
      let pizzaName: String?
-     let pizzaImage: String?
+     let pizzaImageName: String?
  }

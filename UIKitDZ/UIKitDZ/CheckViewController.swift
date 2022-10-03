@@ -9,26 +9,26 @@ import UIKit
 /// Контроллер выставления счета
 final class CheckViewController: UIViewController {
 
-    let alertMessage = """
+    private let alertMessage = """
 Ваш заказ доставят в течении 15 минут!
 Приятного аппетита
 """
-    let ingredientOneLabel = UILabel()
-    let ingredientTwoLabel = UILabel()
-    let ingredientThreeLabel = UILabel()
-    let ingredientFourLabel = UILabel()
-    let pizzaNameLabel = UILabel()
-    let orderLabel = UILabel()
-    let cashLabel = UILabel()
-    let cardLabel = UILabel()
-    let cashSwitch = UISwitch()
-    let cardSwitch = UISwitch()
-    let payButton = UIButton(type: .roundedRect)
+    private let ingredientOneLabel = UILabel()
+    private let ingredientTwoLabel = UILabel()
+    private let ingredientThreeLabel = UILabel()
+    private let ingredientFourLabel = UILabel()
+    private let pizzaNameLabel = UILabel()
+    private let orderLabel = UILabel()
+    private let cashLabel = UILabel()
+    private let cardLabel = UILabel()
+    private let cashSwitch = UISwitch()
+    private let cardSwitch = UISwitch()
+    private let payButton = UIButton(type: .roundedRect)
     var pizza: Pizza?
-    var addChees: Bool?
-    var addHam: Bool?
-    var addMashroom: Bool?
-    var addOlive: Bool?
+    var isAddChees: Bool?
+    var isAddHam: Bool?
+    var isAddMashroom: Bool?
+    var isAddOlive: Bool?
     weak var delegate: ViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ final class CheckViewController: UIViewController {
         allMethod()
     }
     
-    func createButton() {
+    private func createButton() {
         payButton.frame = CGRect(x: 79, y: 775, width: 257, height: 55)
         payButton.setTitle("Pay", for: .normal)
         payButton.setImage(UIImage(systemName: "applelogo"), for: .normal)
@@ -52,7 +52,7 @@ final class CheckViewController: UIViewController {
         view.addSubview(payButton)
     }
     
-    func createLabel() {
+    private func createLabel() {
         pizzaNameLabel.frame = CGRect(x: 46, y: 239, width: 322, height: 44)
         pizzaNameLabel.textAlignment = .left
         pizzaNameLabel.text = pizza?.pizzaName ?? ""
@@ -110,7 +110,7 @@ final class CheckViewController: UIViewController {
         view.addSubview(cardLabel)
     }
     
-    func createSwitch() {
+    private func createSwitch() {
         cashSwitch.frame = CGRect(x: 289, y: 603, width: 49, height: 31)
         cashSwitch.isOn = false
         cashSwitch.addTarget(self, action: #selector(cashSwitchAction), for: .touchUpInside)
@@ -121,7 +121,7 @@ final class CheckViewController: UIViewController {
         view.addSubview(cardSwitch)
     }
     
-    func allMethod() {
+    private func allMethod() {
         view.backgroundColor = .white
         createButton()
         createLabel()
@@ -129,7 +129,7 @@ final class CheckViewController: UIViewController {
         presentExstrasIngredients()
     }
     
-    func checkIsEmptyLabel(text: String) {
+    private func checkIsEmptyLabel(text: String) {
         let stringIsEmpty = ""
         if ingredientOneLabel.text == stringIsEmpty {
             ingredientOneLabel.text = text
@@ -141,34 +141,35 @@ final class CheckViewController: UIViewController {
             ingredientFourLabel.text = text
         }
     }
-    func presentExstrasIngredients() {
-        if addChees ?? false {
+    
+    private func presentExstrasIngredients() {
+        if isAddChees ?? false {
             checkIsEmptyLabel(text: "Сыр Моцарелла")
         }
-        if addHam ?? false {
+        if isAddHam ?? false {
             checkIsEmptyLabel(text: "Ветчина")
         }
-        if addMashroom ?? false {
+        if isAddMashroom ?? false {
             checkIsEmptyLabel(text: "Грибы")
         }
-        if addOlive ?? false {
+        if isAddOlive ?? false {
             checkIsEmptyLabel(text: "Маслины")
         }
     }
 
-    @objc func cardSwitchAction() {
+    @objc private func cardSwitchAction() {
         if cardSwitch.isOn {
             cashSwitch.setOn(false, animated: true)
         }
     }
     
-    @objc func cashSwitchAction() {
+    @objc private func cashSwitchAction() {
         if cashSwitch.isOn {
             cardSwitch.setOn(false, animated: true)
         }
     }
     
-    @objc func payButtonAction() {
+    @objc private func payButtonAction() {
         let alertController = UIAlertController(title: "Заказ оплачен!",
                                                 message: alertMessage, preferredStyle: .alert)
         let alertControllerAction = UIAlertAction(title: "Ok", style: .default) {_ in
