@@ -7,18 +7,21 @@
 
 import UIKit
 /// Контроллер будильника
-class AlarmViewController: UIViewController {
-
-    @IBOutlet weak var alarmOneSwitch: UISwitch!
-    @IBOutlet weak var alarmTwoSwitch: UISwitch!
-    @IBOutlet weak var alarmThreeSwitch: UISwitch!
+final class AlarmViewController: UIViewController {
     
+    // MARK: - IBOutlet
+    @IBOutlet private weak var alarmOneSwitch: UISwitch!
+    @IBOutlet private weak var alarmTwoSwitch: UISwitch!
+    @IBOutlet private weak var alarmThreeSwitch: UISwitch!
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         colorSwitch()
     }
     
-    func colorSwitch() {
+    // MARK: - Private Methods
+    private func colorSwitch() {
         alarmOneSwitch.layer.cornerRadius = alarmOneSwitch.frame.height / 2
         alarmOneSwitch.backgroundColor = UIColor.darkGray
         alarmOneSwitch.clipsToBounds = true

@@ -7,22 +7,26 @@
 
 import UIKit
 /// Контроллер таймера
-class TimerViewController: UIViewController {
-
-    @IBOutlet weak var timerPicker: UIPickerView!
+final class TimerViewController: UIViewController {
     
+    // MARK: - IBOutlet
+    @IBOutlet private weak var timerPicker: UIPickerView!
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         createPicker()
     }
     
-    func createPicker() {
+    // MARK: - Private Method
+    private func createPicker() {
         timerPicker.delegate = self
         timerPicker.dataSource = self
         timerPicker.setValue(UIColor.white, forKey: "textColor")
     }
 }
 
+    // MARK: - UIPickerViewDataSource, UIPickerViewDelegate
 extension TimerViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
