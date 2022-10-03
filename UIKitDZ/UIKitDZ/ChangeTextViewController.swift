@@ -7,23 +7,25 @@
 
 import UIKit
 /// Контроллер изменения текста
-class ChangeTextViewController: UIViewController {
+final class ChangeTextViewController: UIViewController {
+    
     // MARK: - Private Properties
-    let textLable = UILabel()
-    let sizeTextSlider = UISlider()
-    let textColorPicker = UIPickerView()
-    let amountLinesPicker = UIPickerView()
-    let amountLinesArray = [0, 1, 2]
-    let textColorArray = [UIColor.black, UIColor.orange, UIColor.red, UIColor.blue, UIColor.green]
-    let nameTextColorArray = ["Черный", "Оранжевый", "Красный", "Синий", "Зеленый"]
-    let textShadowSwitch = UISwitch()
-    let textTransferSwitch = UISwitch()
-    let sizeLable = UILabel()
-    let choiceColorLable = UILabel()
-    let choiceLinesLable = UILabel()
-    let shadowLable = UILabel()
-    let transferLable = UILabel()
-    var addTextbarButton = UIBarButtonItem()
+    private let textLabel = UILabel()
+    private let sizeTextSlider = UISlider()
+    private let textColorPicker = UIPickerView()
+    private let amountLinesPicker = UIPickerView()
+    private let textShadowSwitch = UISwitch()
+    private let textTransferSwitch = UISwitch()
+    private let sizeLabel = UILabel()
+    private let choiceColorLabel = UILabel()
+    private let choiceLinesLabel = UILabel()
+    private let shadowLabel = UILabel()
+    private let transferLabel = UILabel()
+    private var addTextbarButton = UIBarButtonItem()
+    
+    private let amountLines = [0, 1, 2]
+    private let textColors = [UIColor.black, UIColor.orange, UIColor.red, UIColor.blue, UIColor.green]
+    private let nameTextColors = ["Черный", "Оранжевый", "Красный", "Синий", "Зеленый"]
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -32,52 +34,52 @@ class ChangeTextViewController: UIViewController {
     }
     
     // MARK: - Private Methods
-    func createLable() {
-        textLable.frame = CGRect(x: 20, y: 98, width: 374, height: 295)
-        textLable.textAlignment = .center
-        textLable.backgroundColor = .lightGray
-        textLable.shadowColor = .black
-        view.addSubview(textLable)
+    private func createLable() {
+        textLabel.frame = CGRect(x: 20, y: 98, width: 374, height: 295)
+        textLabel.textAlignment = .center
+        textLabel.backgroundColor = .lightGray
+        textLabel.shadowColor = .black
+        view.addSubview(textLabel)
         
-        sizeLable.frame = CGRect(x: 160, y: 480, width: 100, height: 30)
-        sizeLable.textAlignment = .center
-        sizeLable.adjustsFontSizeToFitWidth = true
-        sizeLable.text = "Размер шрифта"
-        view.addSubview(sizeLable)
+        sizeLabel.frame = CGRect(x: 160, y: 480, width: 100, height: 30)
+        sizeLabel.textAlignment = .center
+        sizeLabel.adjustsFontSizeToFitWidth = true
+        sizeLabel.text = "Размер шрифта"
+        view.addSubview(sizeLabel)
         
-        choiceColorLable.frame = CGRect(x: 50, y: 690, width: 100, height: 30)
-        choiceColorLable.textAlignment = .center
-        choiceColorLable.adjustsFontSizeToFitWidth = true
-        choiceColorLable.text = "Выбор цвета"
-        view.addSubview(choiceColorLable)
+        choiceColorLabel.frame = CGRect(x: 50, y: 690, width: 100, height: 30)
+        choiceColorLabel.textAlignment = .center
+        choiceColorLabel.adjustsFontSizeToFitWidth = true
+        choiceColorLabel.text = "Выбор цвета"
+        view.addSubview(choiceColorLabel)
         
-        choiceLinesLable.frame = CGRect(x: 250, y: 690, width: 100, height: 30)
-        choiceLinesLable.textAlignment = .center
-        choiceLinesLable.adjustsFontSizeToFitWidth = true
-        choiceLinesLable.text = "Выбор линий"
-        view.addSubview(choiceLinesLable)
+        choiceLinesLabel.frame = CGRect(x: 250, y: 690, width: 100, height: 30)
+        choiceLinesLabel.textAlignment = .center
+        choiceLinesLabel.adjustsFontSizeToFitWidth = true
+        choiceLinesLabel.text = "Выбор линий"
+        view.addSubview(choiceLinesLabel)
         
-        transferLable.frame = CGRect(x: 255, y: 790, width: 100, height: 30)
-        transferLable.textAlignment = .center
-        transferLable.adjustsFontSizeToFitWidth = true
-        transferLable.text = "Перенос"
-        view.addSubview(transferLable)
+        transferLabel.frame = CGRect(x: 255, y: 790, width: 100, height: 30)
+        transferLabel.textAlignment = .center
+        transferLabel.adjustsFontSizeToFitWidth = true
+        transferLabel.text = "Перенос"
+        view.addSubview(transferLabel)
         
-        shadowLable.frame = CGRect(x: 55, y: 790, width: 100, height: 30)
-        shadowLable.textAlignment = .center
-        shadowLable.adjustsFontSizeToFitWidth = true
-        shadowLable.text = "Тень"
-        view.addSubview(shadowLable)
+        shadowLabel.frame = CGRect(x: 55, y: 790, width: 100, height: 30)
+        shadowLabel.textAlignment = .center
+        shadowLabel.adjustsFontSizeToFitWidth = true
+        shadowLabel.text = "Тень"
+        view.addSubview(shadowLabel)
     }
     
-    func createBarButton() {
+    private func createBarButton() {
         addTextbarButton = UIBarButtonItem(image: UIImage(systemName: "plus"),
                                            style: .plain, target: self, action: #selector(addTextAction))
         navigationItem.rightBarButtonItem = addTextbarButton
         addTextbarButton.tintColor = UIColor.black
     }
     
-    func createSlider() {
+    private func createSlider() {
         sizeTextSlider.frame = CGRect(x: 20, y: 424, width: 374, height: 30)
         sizeTextSlider.minimumValue = 10
         sizeTextSlider.maximumValue = 70
@@ -85,7 +87,7 @@ class ChangeTextViewController: UIViewController {
         view.addSubview(sizeTextSlider)
     }
     
-    func createPicker() {
+    private func createPicker() {
         textColorPicker.frame = CGRect(x: 20, y: 530, width: 170, height: 160)
         textColorPicker.delegate = self
         textColorPicker.dataSource = self
@@ -99,7 +101,7 @@ class ChangeTextViewController: UIViewController {
         view.addSubview(amountLinesPicker)
     }
     
-    func createSwitch() {
+    private func createSwitch() {
         textShadowSwitch.frame = CGRect(x: 80, y: 750, width: 0, height: 0)
         textShadowSwitch.addTarget(self, action: #selector(textShadowAction), for: .valueChanged)
         textShadowSwitch.isOn = false
@@ -111,7 +113,7 @@ class ChangeTextViewController: UIViewController {
         view.addSubview(textTransferSwitch)
     }
     
-    func allMetod() {
+    private func allMetod() {
         navigationItem.title = "Change Lable"
         navigationController?.title = "First VC"
         createLable()
@@ -121,30 +123,31 @@ class ChangeTextViewController: UIViewController {
         createSwitch()
     }
     
-    @objc func textTransferAction() {
+    // MARK: - objc Private Methods
+    @objc private func textTransferAction() {
         if textTransferSwitch.isOn {
-            textLable.lineBreakMode = .byWordWrapping
+            textLabel.lineBreakMode = .byWordWrapping
         } else {
-            textLable.lineBreakMode = .byCharWrapping
+            textLabel.lineBreakMode = .byCharWrapping
         }
     }
     
-    @objc func textShadowAction() {
+    @objc private func textShadowAction() {
         if textShadowSwitch.isOn {
-            textLable.shadowOffset = CGSize(width: 2, height: 3)
+            textLabel.shadowOffset = CGSize(width: 2, height: 3)
         } else {
-            textLable.shadowOffset = CGSize(width: 0, height: 0)
+            textLabel.shadowOffset = CGSize(width: 0, height: 0)
         }
     }
     
-    @objc func sizeTextAction() {
-        textLable.font = textLable.font.withSize(CGFloat(sizeTextSlider.value))
+    @objc private func sizeTextAction() {
+        textLabel.font = textLabel.font.withSize(CGFloat(sizeTextSlider.value))
     }
     
-    @objc func addTextAction() {
+    @objc private func addTextAction() {
         let alertController = UIAlertController(title: "Введите текст", message: nil, preferredStyle: .alert)
         let alertControllerAction = UIAlertAction(title: "Принять", style: .default) {_ in
-            self.textLable.text = alertController.textFields?.first?.text ?? ""
+            self.textLabel.text = alertController.textFields?.first?.text ?? ""
         }
         alertController.addTextField(configurationHandler: nil)
         alertController.addAction(alertControllerAction)
@@ -162,9 +165,9 @@ extension ChangeTextViewController: UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView.tag {
         case 1:
-            return textColorArray.count
+            return textColors.count
         case 2:
-            return amountLinesArray.count
+            return amountLines.count
         default:
             return 0
         }
@@ -173,9 +176,9 @@ extension ChangeTextViewController: UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView.tag {
         case 1:
-            return nameTextColorArray[row]
+            return nameTextColors[row]
         case 2:
-            return String(amountLinesArray[row])
+            return String(amountLines[row])
         default:
             return nil
         }
@@ -184,9 +187,9 @@ extension ChangeTextViewController: UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
         case 1:
-            textLable.textColor = textColorArray[row]
+            textLabel.textColor = textColors[row]
         case 2:
-            textLable.numberOfLines = amountLinesArray[row]
+            textLabel.numberOfLines = amountLines[row]
         default:
             break
         }

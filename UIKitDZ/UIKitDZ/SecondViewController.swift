@@ -9,6 +9,7 @@ import UIKit
 /// Второй контроллер
 class SecondViewController: UIViewController {
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.title = "Second VC"
