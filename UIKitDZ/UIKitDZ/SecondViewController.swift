@@ -7,7 +7,7 @@
 
 import UIKit
 /// Второй контроллер
-class SecondViewController: UIViewController {
+final class SecondViewController: UIViewController {
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
