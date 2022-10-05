@@ -10,11 +10,13 @@ import UIKit
 final class RegistrationViewController: UIViewController {
  
     // MARK: - IBOutlet
+    @IBOutlet private weak var nameTextField: UITextField!
+    @IBOutlet private weak var surnameTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     
-    @IBOutlet private weak var userNameTextField: UITextField!
-    @IBOutlet private weak var userSurnameTextField: UITextField!
-    @IBOutlet private weak var userEmailTextField: UITextField!
-    @IBOutlet private weak var userPasswordTextField: UITextField!
+    // MARK: - Private Propertys
+    private let defaults = UserDefaults.standard
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -22,12 +24,25 @@ final class RegistrationViewController: UIViewController {
         allMethod()
     }
     
+    // MARK: - IBAction
+    @IBAction private func registrationButton(_ sender: Any) {
+        let username = emailTextField.text ?? ""
+        if !username.isEmpty {
+            UserDefaults.standard.set(username, forKey: "emailTextField")
+        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let singInVC = storyboard.instantiateViewController(withIdentifier: "SingInVC")
+                as? SingInViewController else { return }
+        singInVC.modalPresentationStyle = .fullScreen
+        show(singInVC, sender: nil)
+    }
+    
     // MARK: - Private Methods
     private func transitionTextField() {
-        userNameTextField.delegate = self
-        userSurnameTextField.delegate = self
-        userEmailTextField.delegate = self
-        userPasswordTextField.delegate = self
+        nameTextField.delegate = self
+        surnameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     private func notificationKeyboard() {
@@ -47,21 +62,25 @@ final class RegistrationViewController: UIViewController {
     private func allMethod() {
         transitionTextField()
         notificationKeyboard()
+        defaults.string(forKey: "emailTextField")
     }
-    
-    // MARK: - objc Private Methods
 }
 
 // MARK: - UITextFieldDelegate
 extension RegistrationViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case textField where textField == userNameTextField: userSurnameTextField.becomeFirstResponder()
-        case textField where textField == userSurnameTextField: userEmailTextField.becomeFirstResponder()
-        case textField where textField == userEmailTextField: userPasswordTextField.becomeFirstResponder()
-        case textField where textField == userPasswordTextField: userPasswordTextField.resignFirstResponder()
-        default: break
+        case nameTextField:
+            surnameTextField.becomeFirstResponder()
+        case surnameTextField:
+            emailTextField.becomeFirstResponder()
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            passwordTextField.resignFirstResponder()
+        default:
+            textField.resignFirstResponder()
         }
-        return true
+        return false
     }
 }
