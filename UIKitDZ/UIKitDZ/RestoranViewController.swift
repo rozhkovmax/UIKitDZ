@@ -24,8 +24,6 @@ final class RestoranViewController: UIViewController {
     @IBOutlet weak var hallImageView: UIImageView!
     @IBOutlet weak var hallDescriptionLabel: UILabel!
     
-    // MARK: - Private Propertys
-    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,10 +31,6 @@ final class RestoranViewController: UIViewController {
     }
     
     // MARK: - IBAction
-    @IBAction func offSmoking(_ sender: Any) {
-    }
-    @IBAction func onSmoking(_ sender: Any) {
-    }
     @IBAction func choiceSegmentController(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:

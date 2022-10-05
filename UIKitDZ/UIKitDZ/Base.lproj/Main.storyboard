@@ -271,9 +271,6 @@
                                 <rect key="frame" x="184" y="657" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="onSmoking:" destination="Zfl-2E-tPF" eventType="valueChanged" id="2jq-Vs-vzX"/>
-                                </connections>
                             </switch>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UeG-3W-XFe">
                                 <rect key="frame" x="87" y="422" width="240" height="32"/>
