@@ -10,8 +10,8 @@ import UIKit
 final class SingInViewController: UIViewController {
     
     // MARK: - IBOutlet
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet private weak var emailTextField: UITextField!
+    @IBOutlet private weak var passwordTextField: UITextField!
     
     // MARK: - Private Properties
     private var key = ""
@@ -24,11 +24,11 @@ final class SingInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        key = UserDefaults.standard.string(forKey: "emailTextField") ?? ""
+        userDefaultsKey()
     }
 
     // MARK: - IBAction
-    @IBAction func singInButton(_ sender: Any) {
+    @IBAction private func singInAction(_ sender: Any) {
         if emailTextField.text == key {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             guard let restoranVC = storyboard.instantiateViewController(withIdentifier: "RestoranVC")
@@ -39,7 +39,7 @@ final class SingInViewController: UIViewController {
         print("\(key)")
     }
     
-    @IBAction func registrationButton(_ sender: Any) {
+    @IBAction private func registrationAction(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let registrationVC = storyboard.instantiateViewController(withIdentifier: "RegistrationVC")
                 as? RegistrationViewController else { return }
@@ -48,9 +48,13 @@ final class SingInViewController: UIViewController {
     }
     
     // MARK: - Private Methods
-    func transitionTextField() {
+    private func transitionTextField() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
+    }
+    
+    private func userDefaultsKey() {
+        key = UserDefaults.standard.string(forKey: "emailTextField") ?? ""
     }
 }
 

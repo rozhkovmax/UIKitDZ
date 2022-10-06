@@ -25,7 +25,7 @@ final class RegistrationViewController: UIViewController {
     }
     
     // MARK: - IBAction
-    @IBAction private func registrationButton(_ sender: Any) {
+    @IBAction private func registrationAction(_ sender: Any) {
         let username = emailTextField.text ?? ""
         if !username.isEmpty {
             UserDefaults.standard.set(username, forKey: "emailTextField")

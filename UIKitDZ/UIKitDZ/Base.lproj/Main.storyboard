@@ -64,7 +64,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="singInButton:" destination="kTG-OX-zOP" eventType="touchUpInside" id="nia-uw-Xz2"/>
+                                    <action selector="singInAction:" destination="kTG-OX-zOP" eventType="touchUpInside" id="bzl-Py-doJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A83-yB-Mxz">
@@ -83,7 +83,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="registrationButton:" destination="kTG-OX-zOP" eventType="touchUpInside" id="3y7-ME-VBV"/>
+                                    <action selector="registrationAction:" destination="kTG-OX-zOP" eventType="touchUpInside" id="jal-Jd-ecj"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="fjl-ga-ShR">
@@ -185,7 +185,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="registrationButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rUK-uY-ZgS"/>
+                                    <action selector="registrationAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kEi-oo-7D6"/>
                                 </connections>
                             </button>
                         </subviews>
