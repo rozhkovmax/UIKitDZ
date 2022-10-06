@@ -125,8 +125,8 @@ XI
 XII
 Плывет. Куда ж нам плыть?
 """
-        static let increaseThicknessFont = "A"
-        static let reduceThicknessFont = "a"
+        static let increaseThickness = "A"
+        static let reduceThickness = "a"
         static let nameTextFont = ["Helvetica", "Times New Roman", "Optima", "American Typewriter"]
         static let textFont = [UIFont(name: "Helvetica", size: 17),
                                UIFont(name: "Times New Roman", size: 17),
@@ -166,19 +166,21 @@ XII
         view.addSubview(bookTextView)
     }
     
-    private func createButton() {
+    private func createFontButton() {
         increaseThicknessFontButton.frame = CGRect(x: 300, y: 670, width: 50, height: 50)
         increaseThicknessFontButton.titleLabel?.font = UIFont(name: "Times New Roman", size: 30)
-        increaseThicknessFontButton.setTitle(Constants.increaseThicknessFont, for: .normal)
+        increaseThicknessFontButton.setTitle(Constants.increaseThickness, for: .normal)
         increaseThicknessFontButton.addTarget(self, action: #selector(increaseThicknessFontAction), for: .touchUpInside)
         view.addSubview(increaseThicknessFontButton)
         
         reduceThicknessFontButton.frame = CGRect(x: 300, y: 720, width: 50, height: 50)
         reduceThicknessFontButton.titleLabel?.font = UIFont(name: "Times New Roman", size: 30)
-        reduceThicknessFontButton.setTitle(Constants.reduceThicknessFont, for: .normal)
+        reduceThicknessFontButton.setTitle(Constants.reduceThickness, for: .normal)
         reduceThicknessFontButton.addTarget(self, action: #selector(reduceThicknessFontAction), for: .touchUpInside)
         view.addSubview(reduceThicknessFontButton)
-        
+    }
+    
+    private func createTextColorButton() {
         textColorBlackButton.frame = CGRect(x: 50, y: 600, width: 40, height: 40)
         textColorBlackButton.backgroundColor = .black
         textColorBlackButton.layer.borderWidth = 1
@@ -210,7 +212,9 @@ XII
         textColorBlueButton.layer.cornerRadius = textColorBlueButton.frame.size.height / 2
         textColorBlueButton.addTarget(self, action: #selector(textColorBlueAction), for: .touchUpInside)
         view.addSubview(textColorBlueButton)
-        
+    }
+    
+    private func createShareButton() {
         shareButton.frame = CGRect(x: 280, y: 760, width: 100, height: 50)
         shareButton.setTitle("Поделиться", for: .normal)
         shareButton.addTarget(self, action: #selector(shareAction), for: .touchUpInside)
@@ -242,7 +246,9 @@ XII
     }
     
     private func allMetod() {
-        createButton()
+        createFontButton()
+        createTextColorButton()
+        createShareButton()
         createSlider()
         createPicker()
         createSwitch()
