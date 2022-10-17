@@ -6,9 +6,10 @@
 //
 
 import UIKit
-/// Начальный VC
-class ViewController: UIViewController {
+/// Контроллер NSLayoutConstraint Storyboard
+final class FirstViewController: UIViewController {
 
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
