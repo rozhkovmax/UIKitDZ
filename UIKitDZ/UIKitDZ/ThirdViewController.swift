@@ -6,32 +6,33 @@
 //
 
 import UIKit
+
 /// Контроллер NSLayoutAnchor
 final class ThirdViewController: UIViewController {
     
-    // MARK: - Visual Components
-    private lazy var blackView: UIView = {
+    // MARK: - Private Visual Components
+    private let blackView: UIView = {
         let view = UIView()
         view.backgroundColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var redView: UIView = {
+    private let redView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemRed
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var yellowView: UIView = {
+    private let yellowView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemYellow
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var greenView: UIView = {
+    private let greenView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGreen
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -41,11 +42,11 @@ final class ThirdViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        allMethods()
+        setupUI()
     }
     
     // MARK: - Private Methods
-    private func allMethods() {
+    private func setupUI() {
         view.addSubview(blackView)
         view.addSubview(redView)
         view.addSubview(yellowView)

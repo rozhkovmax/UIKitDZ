@@ -6,32 +6,33 @@
 //
 
 import UIKit
+
 /// Контроллер Stack View
 final class FourViewController: UIViewController {
     
-    // MARK: - Visual Components
-    private lazy var redView: UIView = {
+    // MARK: - Private Visual Components
+    private let redView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemRed
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var yellowView: UIView = {
+    private let yellowView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemYellow
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var greenView: UIView = {
+    private let greenView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGreen
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
-    private lazy var colorStackView: UIStackView = {
+    private let colorStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.backgroundColor = .black
         stackView.axis = .vertical
@@ -42,11 +43,11 @@ final class FourViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        allMethods()
+        setupUI()
     }
     
     // MARK: - Private Methods
-    private func allMethods() {
+    private func setupUI() {
         view.addSubview(colorStackView)
         colorStackView.addSubview(redView)
         colorStackView.addSubview(yellowView)
